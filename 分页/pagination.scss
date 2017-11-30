@@ -1,0 +1,44 @@
+/*分页*/
+.pagination {
+    margin: 30px auto;
+    text-align: center;
+    .paging-code,
+    .paging-first,
+    .paging-prev,
+    .paging-next,
+    .paging-last,
+    .paging-false {
+        display: inline-block;
+        min-width: 20px;
+        padding: 1px 3px;
+        margin: 0 5px;
+        border: 1px solid #b3b3b3;
+        color: #838383;
+        font-size: 14px;
+        text-align: center;
+        text-decoration: none;
+    }
+    .paging-code,
+    .paging-first,
+    .paging-prev,
+    .paging-next,
+    .paging-last {
+        cursor: pointer;
+        &:hover {
+            color: #4b79ad;
+            border: 1px solid #7496c6;
+        }
+    }
+    .paging-cur {
+        color: #fff!important;
+        background: #6685b3;
+        border: 1px solid #6685b3!important;
+    }
+    .paging-next,.paging-prev{
+        padding: 1px 10px;
+    }
+    .paging-false{
+        color: #c0c0c0;
+        border: 1px solid #c0c0c0;
+    }
+}

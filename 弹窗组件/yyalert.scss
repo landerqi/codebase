@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+$prefix: ".yyalert";
+$borderColor: #e7e7e7;
+
+@mixin opacity($opacity) {
+    opacity: $opacity / 100;
+    filter: alpha(opacity=$opacity);
+}
+@mixin border-radius($radius) {
+        border-radius: $radius;
+}
+
+#{$prefix}-layer{
+    position: absolute;
+    z-index: 10001;
+    // border-radius: 3px;
+}
+#{$prefix}-icon-x,
+#{$prefix}-arrow{
+    background:url('//res.zhiniu8.com/assets/images/yyalert/btn-pop-close-new.png') no-repeat;
+    background-repeat: no-repeat;
+    &:hover{
+        background:url('//res.zhiniu8.com/assets/images/yyalert/btn-pop-close-new.png') no-repeat;
+        background-repeat: no-repeat;
+    }
+}
+
+#{$prefix}-wrapper{
+    position: relative;
+    background-color: #fff;
+    // border: 1px solid #aaa;
+    zoom: 1;
+    font-family: 'Microsoft YaHei',Arial,Helvetica,sans-serif;
+
+    table{
+        border-collapse: 0;
+        border-spacing: 0;
+            tbody{
+                border: none;
+            }
+    }
+
+    td{
+        padding: 0;
+        border-bottom: none;
+    }
+}
+
+#{$prefix}-content{
+    position: relative;
+    padding: 6px;
+    font-size: 12px;
+    line-height: 1.2;
+    word-break: break-all;
+    zoom: 1;
+}
+
+#{$prefix}-mask,
+#{$prefix}-iframe{
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    z-index: 9998;
+    top: 0;
+    @include opacity(20);
+}
+
+#{$prefix}-header{
+    padding: 0;
+    margin: 0;
+}
+
+#{$prefix}-title{
+    display: block;
+    height: 50px;
+    border-bottom: 1px solid $borderColor;
+    line-height: 50px;
+    font-weight: normal;
+    padding: 0 0 0 15px;
+    font-size: 16px;
+    text-align:left;
+    color:#333;
+}
+
+#{$prefix}-icon-x{
+    position: absolute;
+    z-index: 1;
+    right: 13px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    // background-position: 0px 0px;
+
+    &:hover{
+    // background-position: 0 -40px;
+      opacity: 0.7;
+    };
+}
+
+#{$prefix}-buttons{
+    overflow: hidden;
+    zoom: 1;
+    //text-align: center;
+    text-align: right;
+    height: 60px;
+    background-color: #fafafa;
+    margin-top: 20px;
+    border-bottom: 1px solid #e9eaea;
+}
+
+#{$prefix}-btn-item{
+    display: inline-block;
+    height: 30px;
+    margin: 15px 20px 0px 0;
+    // padding: 5px 8px;
+    // border: 1px solid #aaa;
+    min-width: 48px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #3c92e8;
+    vertical-align: middle;
+    cursor: pointer;
+
+    i{
+        display: block;
+        font-size: 14px;
+        font-style: normal;
+        line-height: 30px;
+        color: #fff;
+    }
+
+    &:hover{
+        background-color: #4aa4f2;
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: #277fcc;
+    }
+
+    &.goPre, &.cancel{
+        background-color: #fff;
+        border: 1px solid #e3eaed;
+        i{
+            color: #3c92e8;
+        }
+        &:hover{
+            background-color: darken(#fff, 5%);
+            text-decoration: none;
+        }
+
+        &:active {
+            background-color: #fff;
+        }
+
+    }
+    &:last-child{
+        //margin-right: 0;
+    }
+}
+
+#{$prefix}-btn-reset {
+    background-color: #2c8ce0;
+
+    i {
+        color:#fff;
+    }
+
+    &:hover {
+       background-color: #4aa4f2;
+    }
+
+    &:active {
+        background-color: #277fcc;
+    }
+}
+
+#{$prefix}-arrow{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#{$prefix}-arrow-left{
+    background-position: -1px -80px;
+    width: 7px;
+    height: 15px;
+}
+#{$prefix}-arrow-up{
+    background-position: -15px -81px;
+    height: 7px;
+    width: 15px;
+}
+#{$prefix}-arrow-right{
+    background-position: -7px -80px;
+    width: 7px;
+    height: 15px;
+}
+#{$prefix}-arrow-down{
+    background-position: -15px -87px;
+    height: 7px;
+    width: 15px;
+}
+#{$prefix}-noresult,
+#{$prefix}-loading{
+    text-align: center;
+}
+#{$prefix}-btn-lightgray{
+    background-color: #999;
+
+    i{
+    color:#fff;
+    }
+}
+.yytips-success, .yytips-confirm, .yytips-error  {
+  font-size: 16px;
+  padding: 20px;
+  line-height: 29px;
+  text-align: center;
+}
+.yytips-success {
+  span{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: url('//res.zhiniu8.com/assets/images/yyalert/bg_icons.png') no-repeat 0 0;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}

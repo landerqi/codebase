@@ -1,0 +1,406 @@
+@charset "UTF-8";
+@import "./extends/mixin";
+
+/*
+* @name: cobraBox
+* @description: 定义宝箱样式
+* @author: xieqi
+*/
+
+/*宝箱区域*/
+.cobra--item {
+	width: 123px;
+	height: 138px;
+	position: relative;
+	z-index: 1001;
+  &__box {
+    width: 94px;
+    height: 92px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -47px;
+    cursor: pointer;
+    &.disable {
+      cursor: default;
+    }
+  }
+  &__open {
+    width: 123px;
+    height: 138px;
+    display: none;
+  }
+	&__countDown {
+		color: #fff;
+		filter:alpha(opacity=50);
+		background-color: rgba(0,0,0,.5);
+		width: 70px;
+		height: 26px;
+		border-radius: 13px;
+		text-align: center;
+		line-height: 26px;
+		font-size: 14px;
+		position: absolute;
+		top: 66px;
+		left: 28px;
+		z-index: 1;
+    display: none;
+	}
+  &__num {
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    width: 28px;
+    text-align: center;
+    line-height: 28px;
+    height: 28px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  //动画
+  .shake {
+    animation: cobra-shake 1s 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  .shake-hard {
+    transform-origin: center center;
+    animation-name: cobra-shake-hard;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .shake-cute {
+    transform-origin: center center;
+    animation-name: cobra-shake-hard;
+    animation-duration: 6000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .shake-rotate {
+    animation-name: cobra-shake-rotate;
+    animation-duration: 6000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}
+
+//hover 提示
+.cobra--hoverTips {
+  position: absolute;
+  bottom: 100px;
+  left: -56px;
+  z-index: 1001;
+  display: none;
+  &__arrow {
+    position: absolute;
+    border-width: 8px;
+    border-color: #000 transparent transparent;
+    border-color: rgba(0,0,0,0.7) transparent transparent;
+    border-style: solid;
+    left: 120px;
+    bottom: -16px;
+  }
+  &__content {
+    background: #000;
+    background: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+    width: 220px;
+    padding: 10px;
+    text-align: center;
+    img {
+      width: 220px;
+    }
+  }
+  em {
+    color: #ffea02;
+    font-weight: bold;
+  }
+}
+//宝箱领取提示
+.cobra--getBoxTips {
+  position: absolute;
+  bottom: 100px;
+  left: -56px;
+  z-index: 1001;
+  &__arrow {
+    background: url('//res.zhiniu8.com/assets/images/cobra_box/arrow_bottom.png') center top no-repeat;
+    width: 23px;
+    height: 12px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -12px;
+  }
+  &__content {
+    background-color: #fff;
+    width: 220px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #e8f0f3;
+  }
+  i {
+    margin: 0 5px;
+    @include inline-block;
+    background: url('//res.zhiniu8.com/assets/images/cobra_box/gift_new_live.png') no-repeat;
+    vertical-align: bottom;
+    line-height: 22px;
+  }
+  em {
+    color: #f40;
+  }
+  .bag-zan {
+    width: 20px;
+    height: 20px;
+    background-position: -60px 0px;
+  }
+  //拜师券
+  .bag-icon-13,  .bag-icon-14, .bag-icon-15, .bag-icon-16{
+    width: 25px;
+    height: 25px;
+    background: url('//res.zhiniu8.com/assets/images/cobra_box/gift_new_live_baishi.png') no-repeat;
+  }
+  //牛丸
+  .bag-icon-10014{
+    width: 22px;
+    height: 22px;
+    background: url('//res.zhiniu8.com/assets/images/cobra_box/niuwan.png') no-repeat;
+  }
+  //Y币
+  .bag-icon-100868 {
+
+  }
+  .bag-niubi {
+    width: 23px;
+    height: 22px;
+    background-position: -300px 0px;
+  }
+}
+
+@keyframes cobra-shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes cobra-shake-hard {
+  2% {
+    transform: translate(3px, -1px) rotate(-0.5deg); }
+  4% {
+    transform: translate(0px, -8px) rotate(-0.5deg); }
+  6% {
+    transform: translate(6px, 10px) rotate(-0.5deg); }
+  8% {
+    transform: translate(10px, -4px) rotate(1.5deg); }
+  10% {
+    transform: translate(-6px, 9px) rotate(-0.5deg); }
+  12% {
+    transform: translate(5px, 2px) rotate(-1.5deg); }
+  14% {
+    transform: translate(-2px, 6px) rotate(0.5deg); }
+  16% {
+    transform: translate(-1px, -2px) rotate(-2.5deg); }
+  18% {
+    transform: translate(4px, 9px) rotate(3.5deg); }
+  20% {
+    transform: translate(6px, 7px) rotate(-0.5deg); }
+  22% {
+    transform: translate(9px, -4px) rotate(-0.5deg); }
+  24% {
+    transform: translate(10px, 8px) rotate(-1.5deg); }
+  26% {
+    transform: translate(-2px, 0px) rotate(2.5deg); }
+  28% {
+    transform: translate(7px, -7px) rotate(2.5deg); }
+  30% {
+    transform: translate(1px, 0px) rotate(-1.5deg); }
+  32% {
+    transform: translate(-6px, -2px) rotate(2.5deg); }
+  34% {
+    transform: translate(1px, -4px) rotate(-0.5deg); }
+  36% {
+    transform: translate(1px, 7px) rotate(0.5deg); }
+  38% {
+    transform: translate(6px, -9px) rotate(0.5deg); }
+  40% {
+    transform: translate(-5px, -3px) rotate(-1.5deg); }
+  42% {
+    transform: translate(0px, -6px) rotate(-2.5deg); }
+  44% {
+    transform: translate(7px, 10px) rotate(1.5deg); }
+  46% {
+    transform: translate(6px, -4px) rotate(2.5deg); }
+  48% {
+    transform: translate(-4px, -6px) rotate(-0.5deg); }
+  50% {
+    transform: translate(3px, -4px) rotate(0.5deg); }
+  52% {
+    transform: translate(7px, 2px) rotate(2.5deg); }
+  54% {
+    transform: translate(7px, 4px) rotate(-2.5deg); }
+  56% {
+    transform: translate(9px, 1px) rotate(-2.5deg); }
+  58% {
+    transform: translate(-3px, -7px) rotate(2.5deg); }
+  60% {
+    transform: translate(6px, 3px) rotate(0.5deg); }
+  62% {
+    transform: translate(1px, 4px) rotate(-0.5deg); }
+  64% {
+    transform: translate(10px, 4px) rotate(-0.5deg); }
+  66% {
+    transform: translate(8px, -7px) rotate(2.5deg); }
+  68% {
+    transform: translate(-3px, -6px) rotate(0.5deg); }
+  70% {
+    transform: translate(-7px, -4px) rotate(1.5deg); }
+  72% {
+    transform: translate(10px, 6px) rotate(1.5deg); }
+  74% {
+    transform: translate(3px, 9px) rotate(1.5deg); }
+  76% {
+    transform: translate(-6px, 5px) rotate(-2.5deg); }
+  78% {
+    transform: translate(4px, 5px) rotate(0.5deg); }
+  80% {
+    transform: translate(-8px, 3px) rotate(3.5deg); }
+  82% {
+    transform: translate(3px, -2px) rotate(2.5deg); }
+  84% {
+    transform: translate(7px, 10px) rotate(-0.5deg); }
+  86% {
+    transform: translate(5px, -6px) rotate(-0.5deg); }
+  88% {
+    transform: translate(-8px, -5px) rotate(0.5deg); }
+  90% {
+    transform: translate(3px, -9px) rotate(-0.5deg); }
+  92% {
+    transform: translate(8px, 8px) rotate(-0.5deg); }
+  94% {
+    transform: translate(-6px, -7px) rotate(2.5deg); }
+  96% {
+    transform: translate(-6px, 5px) rotate(0.5deg); }
+  98% {
+    transform: translate(5px, -7px) rotate(0.5deg); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+
+@keyframes cobra-shake-rotate {
+  2% {
+    transform: translate(0, 0) rotate(7.5deg); }
+  4% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  6% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  8% {
+    transform: translate(0, 0) rotate(-0.5deg); }
+  10% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  12% {
+    transform: translate(0, 0) rotate(-5.5deg); }
+  14% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  16% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  18% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  20% {
+    transform: translate(0, 0) rotate(1.5deg); }
+  22% {
+    transform: translate(0, 0) rotate(-5.5deg); }
+  24% {
+    transform: translate(0, 0) rotate(3.5deg); }
+  26% {
+    transform: translate(0, 0) rotate(4.5deg); }
+  28% {
+    transform: translate(0, 0) rotate(5.5deg); }
+  30% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  32% {
+    transform: translate(0, 0) rotate(-0.5deg); }
+  34% {
+    transform: translate(0, 0) rotate(6.5deg); }
+  36% {
+    transform: translate(0, 0) rotate(4.5deg); }
+  38% {
+    transform: translate(0, 0) rotate(-5.5deg); }
+  40% {
+    transform: translate(0, 0) rotate(6.5deg); }
+  42% {
+    transform: translate(0, 0) rotate(-4.5deg); }
+  44% {
+    transform: translate(0, 0) rotate(6.5deg); }
+  46% {
+    transform: translate(0, 0) rotate(1.5deg); }
+  48% {
+    transform: translate(0, 0) rotate(-6.5deg); }
+  50% {
+    transform: translate(0, 0) rotate(6.5deg); }
+  52% {
+    transform: translate(0, 0) rotate(4.5deg); }
+  54% {
+    transform: translate(0, 0) rotate(-6.5deg); }
+  56% {
+    transform: translate(0, 0) rotate(-5.5deg); }
+  58% {
+    transform: translate(0, 0) rotate(7.5deg); }
+  60% {
+    transform: translate(0, 0) rotate(3.5deg); }
+  62% {
+    transform: translate(0, 0) rotate(6.5deg); }
+  64% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  66% {
+    transform: translate(0, 0) rotate(-4.5deg); }
+  68% {
+    transform: translate(0, 0) rotate(-3.5deg); }
+  70% {
+    transform: translate(0, 0) rotate(-3.5deg); }
+  72% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  74% {
+    transform: translate(0, 0) rotate(-5.5deg); }
+  76% {
+    transform: translate(0, 0) rotate(4.5deg); }
+  78% {
+    transform: translate(0, 0) rotate(-1.5deg); }
+  80% {
+    transform: translate(0, 0) rotate(1.5deg); }
+  82% {
+    transform: translate(0, 0) rotate(2.5deg); }
+  84% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  86% {
+    transform: translate(0, 0) rotate(-2.5deg); }
+  88% {
+    transform: translate(0, 0) rotate(7.5deg); }
+  90% {
+    transform: translate(0, 0) rotate(4.5deg); }
+  92% {
+    transform: translate(0, 0) rotate(-6.5deg); }
+  94% {
+    transform: translate(0, 0) rotate(0.5deg); }
+  96% {
+    transform: translate(0, 0) rotate(5.5deg); }
+  98% {
+    transform: translate(0, 0) rotate(-6.5deg); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
